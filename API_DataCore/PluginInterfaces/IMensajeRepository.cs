@@ -8,7 +8,7 @@ using API_GenericCore.GenericRepository.Interfaces;
 
 namespace API_DataCore.PluginInterfaces
 {
-    public interface IContactoRepository : IGenericRepository<Contactos>
+    public interface IMensajeRepository : IGenericRepository<Mensaje>
     {
     }
 }
