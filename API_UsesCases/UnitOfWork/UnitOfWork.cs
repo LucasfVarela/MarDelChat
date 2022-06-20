@@ -16,11 +16,13 @@ namespace API_UsesCases.UnitOfWork
         private readonly ApplicationDbContext _context;
         protected readonly ILogger _logger;
 
-        public   CustomLogger loggerCustom { get; private set; }
-
-
-        
+        public   CustomLogger loggerCustom { get; private set; }      
         public IUsuarioRepository UsuarioRepo { get; private set; }
+        public IChatRepository ChatRepo { get; private set; }
+        public IChatUsuarioRepository ChatUsuarioRepo { get; private set; }
+        public IContactoRepository ContactoRepo { get; private set; }
+        public IMensajeRepository MensajeRepo { get; private set; }
+
         public UnitOfWork(ApplicationDbContext context, ILoggerFactory logger)
         {
             _context = context;
@@ -28,6 +30,10 @@ namespace API_UsesCases.UnitOfWork
             loggerCustom = new CustomLogger(_logger);
             
             UsuarioRepo = new UsuarioRepository(context, loggerCustom);
+            ChatRepo = new ChatRepository(context, loggerCustom);
+            ContactoRepo = new ContactoRepository(context, loggerCustom);
+            ChatUsuarioRepo = new ChatUsuarioRepository(context, loggerCustom);
+            MensajeRepo = new MensajeRepository(context, loggerCustom);
         }
         public void Dispose()
         {
