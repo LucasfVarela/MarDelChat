@@ -9,8 +9,10 @@ namespace API_LoggerCore.CustomLogger
 {
     public class CustomLogger
     {
-        private string fileLocation = @"D:\ProjectoChat\MarDelChat\logger.txt";
-        private string errorFileLocation = @"D:\Projecto\MarDelChat\Errorlogger.txt";
+
+        private string fileLocation = @"C:\Users\gc\source\repos\Concecionaria\Concecionaria\logger.txt";
+        private string errorFileLocation = @"C:\Users\gc\source\repos\Concecionaria\Concecionaria\error.txt";
+
         public ILogger logger;
         public CustomLogger(ILogger logger)
         {

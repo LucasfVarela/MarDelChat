@@ -26,7 +26,7 @@ namespace MarDelChat.Controllers
         public ActionResult<IEnumerable<Contactos>> Get()
         {
             customLogger.Info("FROM CONTACTO");
-            var contacto = context.ContactoRepository.GetAll();
+            var contacto = context.ContactoRepo.GetAll();
             return Ok(contacto);
         }
 
@@ -34,7 +34,7 @@ namespace MarDelChat.Controllers
         public ActionResult Post([FromBody] Contactos contacto)
         {
             customLogger.Info("FROM CONTACTO");
-            context.ContactoRepository.Insert(contacto);
+            context.ContactoRepo.Insert(contacto);
             context.Save();
             return Ok();
         }
@@ -42,7 +42,7 @@ namespace MarDelChat.Controllers
         public ActionResult Put([FromBody] Contactos contacto, int id)
         {
             customLogger.Info("FROM CONTANCTO");
-            context.ContactoRepository.Update(contacto, id);
+            context.ContactoRepo.Update(contacto, id);
             context.Save();
             return Ok();
 
@@ -51,7 +51,7 @@ namespace MarDelChat.Controllers
         public ActionResult Delete(int id)
         {
             customLogger.Info("FROM CONTACTO");
-            context.ContactoRepository.Delete(id);
+            context.ContactoRepo.Delete(id);
             context.Save();
             return Ok();
         }
