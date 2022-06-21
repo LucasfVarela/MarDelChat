@@ -9,46 +9,43 @@ namespace MarDelChat.Controllers
     [ApiController]
     public class ChatController : Controller
     {
-        private readonly IUnitOfWork _context;
-        private readonly ILogger<ChatController> _logger;
-        private CustomLogger loggerCustom { get; set; }
+        private readonly IUnitOfWork context;
+        private readonly ILogger<ChatController> logger;
+        private CustomLogger customLogger { get; set; }
 
         public ChatController(IUnitOfWork context, ILogger<ChatController> logger)
         {
-            _context = context;
-            _logger = logger;
-            loggerCustom = new CustomLogger(_logger);
+            this.context = context;
+            this.logger = logger;
+            customLogger = new CustomLogger(logger); ;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Chat>> Get()
         {
-            loggerCustom.Info("[Get] Chat");
-            var entidadaux = _context.ChatRepository.GetAll();
+            customLogger.Info("[Get] Chat");
+            var entidadaux = context.ChatRepo.GetAll();
             return Ok(entidadaux);
         }
 
-        public ActionResult CrearChat([FromBody] Chat chat)
+        [HttpPost]
+        public ActionResult Post([FromBody] Chat chat)
         {
-            loggerCustom.Info("[Post] Chat");
-            _context.ChatRepository.Insert(chat);
-            _context.Save();
+            customLogger.Info("[Post] Chat");
+            context.ChatRepo.Insert(chat);
+            context.Save();
             return Ok();
         }
 
         [HttpDelete("{id}")]
-        public ActionResult EliminarChat(int id)
+        public ActionResult Delete(int id)
         {
-            var entidadaux = _context.ChatRepository.GetById(id);
-          
-            loggerCustom.Info("[Delete] Chat");
-            _context.ChatRepository.Delete(id);
-            _context.Save();
+            var entidadaux = context.ChatRepo.GetById(id);
+
+            customLogger.Info("[Delete] Chat");
+            context.ChatRepo.Delete(id);
+            context.Save();
             return Ok();
         }
     }
-
-
-
 }
-
