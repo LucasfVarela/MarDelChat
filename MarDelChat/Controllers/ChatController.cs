@@ -23,7 +23,7 @@ namespace MarDelChat.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Chat>> Get()
         {
-            loggerCustom.Info("[Get] Cliente");
+            loggerCustom.Info("[Get] Chat");
             var entidadaux = _context.ChatRepository.GetAll();
             return Ok(entidadaux);
         }
