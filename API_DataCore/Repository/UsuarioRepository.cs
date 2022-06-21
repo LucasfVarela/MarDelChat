@@ -14,10 +14,10 @@ namespace API_DataCore.Repository
 {
     public class UsuarioRepository : GenericRepository<Usuario>, IUsuarioRepository
     {
-        public UsuarioRepository(ApplicationDbContext options, CustomLogger logger): base(options, logger)
+        public UsuarioRepository(ApplicationDbContext context, CustomLogger logger) : base(context, logger)
         {
-
         }
+
         public Usuario GetByEmail(string email)
         {
             return context.Usuario.FirstOrDefault(a => a.Email == email);

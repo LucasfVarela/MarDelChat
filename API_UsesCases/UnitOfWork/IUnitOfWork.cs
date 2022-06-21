@@ -9,8 +9,10 @@ namespace API_UsesCases.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {
-
-       
+        IChatRepository ChatRepo { get; }
+        IChatUsuarioRepository ChatUsuarioRepo { get; }
+        IContactoRepository ContactoRepo { get; }
+        IMensajeRepository MensajeRepo { get; }
         IUsuarioRepository UsuarioRepo { get; }
         void Save();
     }
