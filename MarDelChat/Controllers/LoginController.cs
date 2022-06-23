@@ -2,11 +2,13 @@
 using API_CoreBusiness.Authentication.Response;
 using API_UsesCases.Services;
 using API_UsesCases.UnitOfWork;
+using API_Validations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API_Consesinaria.Controllers
 {
+    [Tags("LOGIN")]
     [Route("api/[controller]")]
     [ApiController]
     public class LoginController : ControllerBase
@@ -19,7 +21,12 @@ namespace API_Consesinaria.Controllers
             this.unitOfWork = unitOfWork;
             this.usuarioService = usuarioService;
         }
-
+        /// <summary>
+        /// Loguear Usuario
+        /// </summary>
+        /// <param name="req"></param>
+        /// <response code="200">Se logueo correctamente</response>
+        /// <response code="404">No has podido loguearte correctamente</response>
         [HttpPost]
         public ActionResult Login([FromBody] UserRequest req)
         {
@@ -37,7 +44,15 @@ namespace API_Consesinaria.Controllers
             });
         }
 
+        /// <summary>
+        /// Registrar Usuario
+        /// </summary>
+        /// <param name="req"></param>
+        /// <response code="200">Se registro correctamente</response>
+        /// <response code="404">No has podido registrarte correctamente</response>
+
         [HttpPost("Registro")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public ActionResult RegistrarUsuario([FromBody] UserRequest user)
         {
             if (unitOfWork.UsuarioRepo.ExisteUsuario(user.Email.ToLower()))

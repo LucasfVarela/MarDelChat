@@ -2,7 +2,9 @@ using API_CoreBusiness;
 using API_MiddlewareCore.Middleware;
 using API_UsesCases.Services;
 using API_UsesCases.UnitOfWork;
+using API_Validations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -18,6 +20,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ValidationFilterAttribute>();
+
+
+builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
+
 builder.Services.AddControllers();
 builder.Services.AddControllers().AddJsonOptions(x =>
 {
@@ -102,6 +109,7 @@ if (app.Environment.IsDevelopment())
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Chat REST");
         // c.RoutePrefix = string.Empty;
+        c.DefaultModelsExpandDepth(-1);
     });
 }
 app.UseMiddleware<CustomMiddleware>();
