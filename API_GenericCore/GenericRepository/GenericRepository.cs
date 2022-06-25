@@ -59,7 +59,7 @@ namespace API_GenericCore.GenericRepository
             var type = context.Set<T>().Find(id);
             return type;
         }
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             var type = context.Set<T>().ToList();
             if (type == null)

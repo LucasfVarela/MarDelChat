@@ -12,5 +12,6 @@ namespace API_DataCore.PluginInterfaces
     {
         Usuario GetByEmail(string email);
         bool ExisteUsuario(string email);
+        bool ExisteNombre(string nombre);
     }
 }

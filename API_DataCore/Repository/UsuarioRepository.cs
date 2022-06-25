@@ -26,5 +26,10 @@ namespace API_DataCore.Repository
         {
             return context.Usuario.Any(a => a.Email == email);
         }
+
+        public bool ExisteNombre(string nombre)
+        {
+            return context.Usuario.Any(a => a.Nombre == nombre);
+        }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace API_CoreBusiness.Entities
 {
-    public class Usuario 
+    public class Usuario
     {
         [Key]
         public int Id { get; set; }
