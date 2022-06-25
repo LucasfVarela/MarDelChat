@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using API_CoreBusiness.Authentication.Response;
 
 namespace API_CoreBusiness.Entities
 {
@@ -11,6 +12,6 @@ namespace API_CoreBusiness.Entities
     {
         [Key]
         public int id { get; set; }
-        public  Usuario IdUsuario { get; set; }
+        public UserResponse Usuario { get; set; }
     }
 }

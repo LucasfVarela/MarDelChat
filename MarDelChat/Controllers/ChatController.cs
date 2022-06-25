@@ -17,41 +17,35 @@ namespace MarDelChat.Controllers
         {
             this.context = context;
             this.logger = logger;
-            customLogger = new CustomLogger(logger); ;
+            customLogger = new CustomLogger(logger);
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<Chat>> Get()
         {
-
-            loggerCustom.Info("[Get] Chat");
-            var entidadaux = _context.ChatRepo.GetAll();
-
+            customLogger.Info("[Get] Chat");
+            var entidadaux = context.ChatRepo.GetAll();
             return Ok(entidadaux);
         }
-
         [HttpPost]
         public ActionResult Post([FromBody] Chat chat)
         {
-
-            loggerCustom.Info("[Post] Chat");
-            _context.ChatRepo.Insert(chat);
-            _context.Save();
-
+            customLogger.Info("[Post] Chat");
+            context.ChatRepo.Insert(chat);
+            context.Save();
             return Ok();
         }
 
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
+            var entidadaux = context.ChatRepo.GetById(id);
 
-            var entidadaux = _context.ChatRepo.GetById(id);
-          
-            loggerCustom.Info("[Delete] Chat");
-            _context.ChatRepo.Delete(id);
-            _context.Save();
-
+            customLogger.Info("[Delete] Chat");
+            context.ChatRepo.Delete(id);
+            context.Save();
             return Ok();
         }
     }
+
 }

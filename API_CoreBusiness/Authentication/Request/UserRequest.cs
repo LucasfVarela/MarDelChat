@@ -9,10 +9,11 @@ namespace API_CoreBusiness.Authentication.Request
 {
     public class UserRequest
     {
+        [Required(ErrorMessage = "Este valor es requerido")]
         public string Nombre { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Este valor es requerido")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Este valor es requerido")]
         public string Password { get; set; }
     }
 }

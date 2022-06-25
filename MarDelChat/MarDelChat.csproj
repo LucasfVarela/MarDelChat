@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\API_CoreBusiness\API_CoreBusiness.csproj" />
     <ProjectReference Include="..\API_UsesCases\API_UsesCases.csproj" />
+    <ProjectReference Include="..\API_Validations\API_Validations.csproj" />
   </ItemGroup>
 
 </Project>
