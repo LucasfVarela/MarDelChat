@@ -77,28 +77,100 @@ El proyecto está desarrollado usando la metodologia de Arquitectura de N-Capas 
 
 ## Estructura del sistema Backend ##
 ```
-├───API_CoreBusiness  
-│   ├───Authentication  
-│   │   ├───Request  
-│   │   └───Response  
-│   ├───Entities  
-├───API_DataCore  
-│   ├───PluginInterfaces  
-│   └───Repository  
-├───API_GenericCore  
-│   ├───GenericRepository  
-│   │   └───Interfaces  
-├───API_LoggerCore  
-│   ├───CustomLogger  
-│   ├───Middleware  
-│   └───Properties  
-├───API_UsesCases  
-│   ├───Services  
-│   └───UnitOfWork  
-└───MarDelChat  
-    ├───Controllers  
-    ├───Migrations  
-    └───Properties  
+│   .gitattributes
+│   .gitignore
+│   MarDelChat.sln
+│   p.doc
+│   p2.doc
+│   README.md
+│   
+├───API_CoreBusiness
+│   │   API_CoreBusiness.csproj
+│   │   ApplicationDbContext.cs
+│   │   ClassDiagram1.cd
+│   │   
+│   ├───Authentication
+│   │   ├───Request
+│   │   │       UserRequest.cs
+│   │   │       
+│   │   └───Response
+│   │           UserResponse.cs
+│   │           
+│   └───Entities
+│           Chat.cs
+│           ChatType.cs
+│           ChatUsuario.cs
+│           Contactos.cs
+│           Mensaje.cs
+│           Role.cs
+│           Usuario.cs
+│           
+│    
+├───API_DataCore
+│   │   API_DataCore.csproj
+│   │   
+│   ├───PluginInterfaces
+│   │       IChatRepository.cs
+│   │       IChatUsuarioRepository.cs
+│   │       IContactoRepository.cs
+│   │       IMensajeRepository.cs
+│   │       IUsuarioRepository.cs
+│   │       
+│   └───Repository
+│           ChatRepository.cs
+│           ChatUsuarioRepository.cs
+│           ContactoRepository.cs
+│           MensajeRepository.cs
+│           UsuarioRepository.cs
+│           
+├───API_GenericCore
+│   │   API_GenericCore.csproj
+│   │   
+│   └───GenericRepository
+│       │   GenericRepository.cs
+│       │   
+│       └───Interfaces
+│               IGenericRepository.cs
+│               
+├───API_LoggerCore
+│       API_MiddlewareCore.csproj
+│   │   
+│   ├───CustomLogger
+│   │       CustomLogger.cs
+│   │       
+│   ├───Middleware
+│   │       CustomMiddleware.cs
+│   │       
+│   └───Properties
+│           launchSettings.json
+│           
+├───API_UsesCases
+│   │   API_UsesCases.csproj
+│   │   
+│   ├───Services
+│   │       IUserService.cs
+│   │       UserService.cs
+│   │       
+│   └───UnitOfWork
+│           IUnitOfWork.cs
+│           UnitOfWork.cs
+│           
+└───MarDelChat
+    │   .gitattributes
+    │   appsettings.Development.json
+    │   appsettings.json
+    │   MarDelChat.csproj
+    │   Program.cs
+    │   README.md 
+    │   
+    ├───Controllers
+    │       ChatController.cs
+    │       ContactoController.cs
+    │       LoginController.cs
+    │       WeatherForecastController.cs
+    │       
+    └───Properties
+            launchSettings.json
 ```
 ## Requisitos ##
 -Net Framework 4.5
